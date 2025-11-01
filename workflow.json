@@ -1,0 +1,24 @@
+{
+  "active": false,
+  "category": "human resources & payroll",
+  "description": "A workflow that provides biblical verses to comfort users based on their mode",
+  "id": "84fef549-d2a0-4de9-ab7d-25a17beee6ee",
+  "long_description": "\nI am a therapist, I provide you with words of comfort during tough times, encouraging you with words from the bible \nI provide you with bible verses based on your mode, and a brief explanation of what the verse entails. \n I also check in on you every day to see how your fairing.",
+  "name": "ndus_agent",
+  "nodes": [
+    {
+      "id": "biblical_therapist",
+      "name": "biblical therapist",
+      "parameters": {},
+      "position": [
+        816,
+        -112
+      ],
+      "type": "a2a/generic-a2a-node",
+      "url": "https://unapparelled-subcritical-lawana.ngrok-free.dev/a2a/therapist"
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "short_description": "A therapist that provides you with biblical words of encouragement based on your mode"
+}
