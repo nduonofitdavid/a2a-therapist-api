@@ -192,25 +192,17 @@ async def agent_card():
         "description": "An agent that provides therapy sessions along with biblical words of encouragement",
         "url": "https://unapparelled-subcritical-lawana.ngrok-free.dev/",
         "version": "1.0.0",
-        "provider": {
-            "organization": "Ndu Corp",
-            "url": "http://github.com/Forsaken324",
-        },
-        "documentationUrl": "https://unapparelled-subcritical-lawana.ngrok-free.dev/docs",
         "capabilities": {
             "streaming": False,
             "pushNotifications": False,
             "stateTransitionHistory": False
         },
-        "defaultInputModes": ["text/plain"],
-        "defaultOutputModes": ["application/json", "text/plain"],
         "skills": [
             {
                 "name": "therapy",
                 "description": "provides words of encouragement based on the mode entered for the user"
             }
         ],
-        "supportsAuthenticationExtendedCard": False
     }
 
     return JSONResponse(
