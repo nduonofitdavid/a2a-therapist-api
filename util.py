@@ -46,6 +46,9 @@ def get_query_n_history(message_part: List[MessagePart]) -> Tuple[MessagePart, L
     history = process_history(message_part[1].data) if message_part[1].data and isinstance(message_part[1].data, list) else []
     
     print('here2')
+    print(query_str.text)
+    print(query_str.kind)
+    print(MessagePart(kind=query_str.kind, text=query_str.text))
     newest_convo = A2AMessage(
         role='user',
         parts=[MessagePart(kind=query_str.kind, text=query_str.text)]

@@ -1,5 +1,3 @@
-from datetime import datetime, timezone
-from uuid import uuid4
 from fastapi import FastAPI, Request, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse, JSONResponse
@@ -8,11 +6,11 @@ from dotenv import load_dotenv
 import os
 
 
-from google import genai
-from gem import process_message
 
-from models.a2a import JSONRPCRequest, JSONRPCResponse, TaskResult, TaskStatus, Artifact, MessagePart, A2AMessage
-from util import get_query_n_history
+from agent.therapist import TherapyAgent
+
+
+from models.a2a import JSONRPCRequest, JSONRPCResponse
 
 load_dotenv()
 
@@ -25,21 +23,22 @@ if not GEMINI_API_KEY:
 @asynccontextmanager
 async def lifeSpan(app: FastAPI):
     """Lifespan context manager for startup and shutdown"""
-    global gemini_client
+    global therapy_agent
 
-    gemini_client = genai.Client(
-        api_key=GEMINI_API_KEY,
-
+    therapy_agent = TherapyAgent(
+        api_key=GEMINI_API_KEY
     )
 
     yield
 
-    if gemini_client:
-        await gemini_client.aio.aclose()
+    if therapy_agent:
+        await therapy_agent.clean_up()
 
 
 app = FastAPI(
     title="Ndu's Telex Integration",
+    description="An AI agent that provides therapy and comfort through the word of God",
+    version="1.0",
     lifespan=lifeSpan
 )
 
@@ -89,80 +88,36 @@ async def a2a_endpoint(request: Request):
             )
 
         rpc_request = JSONRPCRequest(**body)
-        context_id = str(uuid4())
-        request_id = rpc_request.id
 
+        context_id = None
+        task_id = None
+        messages = []
+        config = None
 
         if rpc_request.method == 'message/send':
-            message = rpc_request.params.message # type: ignore
+            messages =[rpc_request.params.message] # type: ignore
             config = rpc_request.params.configuration # type: ignore
-            task_id = message.taskId or str(uuid4())
-            
-            processed_json = get_query_n_history(message.parts)
-            if not processed_json:
-                return JSONResponse(
-                status_code=400,
-                content={
-                    "jsonrpc": "2.0",
-                    "id": request_id,
-                    "result": {"message": "json payload was not formatted properly"},
-                },
-            )
-    
-            query_, history_ = processed_json
-
-            ai_agent_response = await process_message(request_id, gemini_client, query_) # type: ignore
-            
-            agent_message = A2AMessage(
-                role='agent',
-                parts=[MessagePart(kind='text', text=ai_agent_response)], # type: ignore
-                messageId=str(uuid4()),
-                taskId=task_id,
-            )
-            
-            task_status = TaskStatus(
-                state='completed',
-                timestamp=datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
-                message=agent_message,
-            )
-
-            artifacts = [
-                Artifact(
-                    name='therapistResponse',
-                    parts=[MessagePart(kind='text', text=ai_agent_response)], # type: ignore
-                )
-            ]
-        
-            # print(message.parts[1])
-
-            task_result = TaskResult(
-                id=task_id,
-                contextId=context_id,
-                status=task_status,
-                artifacts=artifacts,
-                history=history_
-            )
-
-            jsonrpc_response = JSONRPCResponse(
-                id=request_id,
-                result=task_result,
-            )            
-
-            return JSONResponse(
-                status_code=200,
-                content=jsonrpc_response.model_dump(),
-            )
-        
 
         elif rpc_request.method == 'execute':
-            return JSONResponse(
-                status_code=200,
-                content={
-                    "jsonrpc": "2.0",
-                    "id": request_id,
-                    "result": {"message": "Execute method not implemented yet"},
-                },
-            )
+            messages = rpc_request.params.messages # type: ignore
+            context_id = rpc_request.params.contextId # type: ignore
+            task_id = rpc_request.params.taskId # type: ignore
+
+        result = await therapy_agent.process_messages(
+            messaages=messages,
+            context_id=context_id,
+            task_id=task_id,
+            config=config
+        )
+
+        # build response
+        response = JSONRPCResponse(
+            id=rpc_request.id,
+            result=result
+        )
+
+        return response.model_dump()
+        
 
     except Exception as e:
         print(str(e))
@@ -182,13 +137,13 @@ async def a2a_endpoint(request: Request):
 @app.get('/health')
 async def health_check():
     """Health check endpoint"""
-    return {"status": "healthy", "agent": "biblical therapist"}
+    return {"status": "healthy", "agent": "biblicaltherapist"}
 
 
 @app.get('/.well-known/agent.json')
 async def agent_card():
     response = {
-        "name": "BiblicalTherapistAgent",
+        "name": "biblicaltherapist",
         "description": "An agent that provides therapy sessions along with biblical words of encouragement",
         "url": "https://unapparelled-subcritical-lawana.ngrok-free.dev/",
         "version": "1.0.0",

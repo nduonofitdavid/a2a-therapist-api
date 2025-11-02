@@ -1,20 +1,21 @@
 {
-  "active": true,
-  "category": "human resources & payroll",
+  "active": false,
+  "category": "utilities",
   "description": "A workflow that provides biblical verses to comfort users based on their mode",
-  "id": "2544f5d0-bfa1-4341-8c0d-14428b41ab11",
-  "long_description": "\nI am a therapist, I provide you with words of comfort during tough times, encouraging you with words from the bible \nI provide you with bible verses based on your mode, and a brief explanation of what the verse entails. \n I also check in on you every day to see how your fairing.",
+  "id": "93bcf584-1ad5-4963-92ca-2db2f57cd299",
   "name": "ndus_agent",
+  "long_description": "\nI am a therapist, I provide you with words of comfort during tough times, encouraging you with words from the bible \nI provide you with bible verses based on your mode, and a brief explanation of what the verse entails. \n I also check in on you every day to see how your fairing.",
+  "short_description": "A therapist that provides you with biblical words of encouragement based on your mode",
   "nodes": [
     {
-      "id": "biblical_therapist",
-      "name": "biblical therapist",
+      "id": "biblical_therapist71",
+      "name": "kristian therapist",
       "parameters": {},
       "position": [
         816,
         -112
       ],
-      "type": "a2a/mastra-a2a-node",
+      "type": "a2a/generic-a2a-node",
       "typeVersion": 1,
       "url": "https://unapparelled-subcritical-lawana.ngrok-free.dev/a2a/therapist"
     }
@@ -22,8 +23,7 @@
   "pinData": {},
   "settings": {
     "executionOrder": "v1"
-  },
-  "short_description": "A therapist that provides you with biblical words of encouragement based on your mode"
+  }
 }
 
 
