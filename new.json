@@ -1,0 +1,36 @@
+{
+    "jsonrpc": "2.0",
+    "id": "df9f853c3d7542d3b1e01957c72db1d1",
+    "method": "message/send",
+    "params": {
+        "message": {
+            "kind": "message",
+            "role": "user",
+            "parts": [
+                {
+                    "kind": "text",
+                    "text": "Lagos, Nigeria"
+                },
+                {
+                    "kind": "data",
+                    "data": [
+                        {
+                            "kind": "text",
+                            "text": "sorry, I could not process your request, try again."
+                        },
+                        {
+                            "kind": "text",
+                            "text": "<p>Nigeria</p><p></p>"
+                        },
+                        {
+                            "kind": "text",
+                            "text": "You've asked specifically about Nigeria, so I can fetch its history and details on fintech startups for you."
+                        }
+                        
+                    ]
+                }
+            ],
+            "messageId": "ea6dc8031df74e0da50398e6a0828a4e"
+      }
+  }
+}

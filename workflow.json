@@ -14,7 +14,8 @@
         816,
         -112
       ],
-      "type": "a2a/generic-a2a-node",
+      "type": "a2a/mastra-a2a-node",
+      "typeVersion": 1,
       "url": "https://unapparelled-subcritical-lawana.ngrok-free.dev/a2a/therapist"
     }
   ],
@@ -22,3 +23,7 @@
   "settings": {},
   "short_description": "A therapist that provides you with biblical words of encouragement based on your mode"
 }
+
+
+
+

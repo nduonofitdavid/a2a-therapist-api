@@ -5,18 +5,20 @@ from fastapi import status
 from google.genai import types
 from google.genai import Client
 
-from typing import List
 
-async def process_message(id: str, gemini_client: Client, message_part:  List[MessagePart]):
-    message_payload = message_part[0]
+async def process_message(id: str, gemini_client: Client, message_part: MessagePart):
     try:
         response = gemini_client.models.generate_content(
             model='gemini-2.5-flash',
             config=types.GenerateContentConfig(
                 thinking_config=types.ThinkingConfig(thinking_budget=-1),
-                system_instruction='You are a biblical therapist, your provide people with words of encouragement and biblical verse and explanation on it based on their modes, the bible verse should only be one. Any questions that does not relate to christianity and the bible, ignore, any question that will likely not be theraputic, ignore and return a response like sorry, I cannot handle that it is beyond my juridstication',
+                system_instruction="""
+                You are a biblical therapist, your provide people with words of encouragement and biblical verse and explanation on it based on their modes, 
+                the bible verse should only be one. Any questions that does not relate to christianity and the bible, ignore, any question that will likely not be theraputic, 
+                ignore and return a polite response saying why you ignored it.
+                """,
             ),
-            contents=message_payload.text
+            contents=message_part.text
         )
         response_message = response.text
         return response_message
