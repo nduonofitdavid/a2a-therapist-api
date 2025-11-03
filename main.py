@@ -1,14 +1,15 @@
+from uuid import uuid4
 from fastapi import FastAPI, Request, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse, JSONResponse
 from contextlib import asynccontextmanager
 from dotenv import load_dotenv
 import os
-
-
+import logging
+import json
+import sys
 
 from agent.therapist import TherapyAgent
-
 
 from models.a2a import JSONRPCRequest, JSONRPCResponse
 
@@ -18,6 +19,23 @@ GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
 
 if not GEMINI_API_KEY:
     raise Exception('GEMINI API key was not found, add it to your .env file')
+
+
+logger = logging.getLogger('fastapi_app')
+logger.setLevel(logging.INFO)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+
+stdout_handler = logging.StreamHandler(sys.stdout)
+stdout_handler.setLevel(logging.DEBUG)
+stdout_handler.setFormatter(formatter)
+
+file_handler = logging.FileHandler('fastapi.log')
+file_handler.setLevel(logging.DEBUG)
+file_handler.setFormatter(formatter)
+
+if not logger.handlers:
+    logger.addHandler(file_handler)
+    logger.addHandler(stdout_handler)
 
 
 @asynccontextmanager
@@ -66,43 +84,84 @@ welcome_response = """
 
 @app.get('/', response_class=HTMLResponse)
 async def index():
+    logger.info('Root endpoint accessed')
     return welcome_response
 
 @app.post('/a2a/therapist')
 async def a2a_endpoint(request: Request):
     """Main Bible therapist endpoint"""
+    
+    
     try:
         body = await request.json()
 
-        if body.get('jsonrpc') != '2.0' or 'id' not in body:
+        if body is None:
             return JSONResponse(
-                status_code=400,
+                status_code=status.HTTP_400_BAD_REQUEST,
                 content={
                     'jsonrpc': '2.0',
-                    'id': body.get('id'),
+                    'id': None,
                     'error': {
                         'code': -32600,
-                        'message': "Invalid Request: jsonrpc must be '2.0' and id is required "
+                        'message': 'Invalid Request: No JSON body'
                     }
                 }
             )
 
-        rpc_request = JSONRPCRequest(**body)
+        logger.info(f"Raw telex body: {json.dumps(body, indent=2)}")
 
-        context_id = None
-        task_id = None
-        messages = []
-        config = None
+        print(body)
 
-        if rpc_request.method == 'message/send':
-            messages =[rpc_request.params.message] # type: ignore
-            config = rpc_request.params.configuration # type: ignore
+        if 'jsonrpc' in body:
+            if body.get('jsonrpc') != '2.0' or 'id' not in body:
+                return JSONResponse(
+                    status_code=400,
+                    content={
+                        'jsonrpc': '2.0',
+                        'id': body.get('id'),
+                        'error': {
+                            'code': -32600,
+                            'message': "Invalid Request: jsonrpc must be '2.0' and id is required "
+                        }
+                    }
+                )
 
-        elif rpc_request.method == 'execute':
-            messages = rpc_request.params.messages # type: ignore
-            context_id = rpc_request.params.contextId # type: ignore
-            task_id = rpc_request.params.taskId # type: ignore
+            rpc_request = JSONRPCRequest(**body)
 
+            context_id = None
+            task_id = None
+            messages = []
+            config = None
+
+            if rpc_request.method == 'message/send':
+                messages =[rpc_request.params.message] # type: ignore
+                config = rpc_request.params.configuration # type: ignore
+
+            elif rpc_request.method == 'execute':
+                messages = rpc_request.params.messages # type: ignore
+                context_id = rpc_request.params.contextId # type: ignore
+                task_id = rpc_request.params.taskId # type: ignore
+            
+            else:
+                return JSONResponse(
+                    status_code=status.HTTP_404_NOT_FOUND,
+                    content={
+                        'jsonrpc': '2.0',
+                        'id': rpc_request.id,
+                        'error': {'code': -32601, 'message': 'Method not found'}
+                    }
+                )
+        else:
+            messages = body.get('messages', []) or []
+            context_id= body.get('contextId')
+            task_id = body.get('id') or str(uuid4())
+            config = body.get('config', None)
+
+            if messages and len(messages) == 1:
+                raw_message = {'parts': messages[0].get('parts', [])}
+                messages = [raw_message]
+
+        # call the AI agent
         result = await therapy_agent.process_messages(
             messaages=messages,
             context_id=context_id,
@@ -111,15 +170,27 @@ async def a2a_endpoint(request: Request):
         )
 
         # build response
-        response = JSONRPCResponse(
-            id=rpc_request.id,
-            result=result
-        )
+        if 'jsonrpc' in body:
+            response = JSONRPCResponse(
+                id=rpc_request.id, # type: ignore
+                result=result
+            )
 
-        return response.model_dump()
+            return response.model_dump()
+    
+        else:
+            result.id = task_id # type: ignore
+            result.status.state = 'completed'
+            return result.model_dump()
         
 
     except Exception as e:
+        logging.error(
+            f"A2A endpoint error - Request ID: {body.get('id') if 'body' in locals() else 'N/A'}" # type: ignore
+            f"Request Method: {body.get('method') if 'body' in locals() else 'N/A'}" # type: ignore
+            f"Exception Raised: {str(e)}",
+            exc_info=True
+        )
         print(str(e))
         return JSONResponse(
             status_code=500,
