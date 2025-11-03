@@ -11,7 +11,7 @@ import sys
 
 from agent.therapist import TherapyAgent
 
-from models.a2a import JSONRPCRequest, JSONRPCResponse
+from models.a2a import A2AMessage, JSONRPCRequest, JSONRPCResponse, MessagePart
 
 load_dotenv()
 
@@ -152,14 +152,24 @@ async def a2a_endpoint(request: Request):
                     }
                 )
         else:
-            messages = body.get('messages', []) or []
-            context_id= body.get('contextId')
+            message = body.get('message')
+            if not message:
+                return JSONResponse(
+                    status_code=status.HTTP_400_BAD_REQUEST,
+                    content={
+                        'jsonrpc': '2.0',
+                        'id': body.get('id') or str(uuid4()),
+                        'error': {
+                            'code': -32600,
+                            'message': "Invalid Request: jsonrpc must be '2.0' and id is required "
+                        }
+                    }
+                )
+            context_id= body.get('contextId') or str(uuid4())
             task_id = body.get('id') or str(uuid4())
             config = body.get('config', None)
 
-            if messages and len(messages) == 1:
-                raw_message = {'parts': messages[0].get('parts', [])}
-                messages = [raw_message]
+            messages = [A2AMessage(kind='message', role='user', parts=[MessagePart(kind='text', text=message), MessagePart(kind='data', data=[{'kind': 'text', 'text': message}])])]
 
         # call the AI agent
         result = await therapy_agent.process_messages(

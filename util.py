@@ -7,7 +7,7 @@ def purify_text(text: str) -> str:
 
 def process_history(prev_messages: List[Dict[str, Any]]) -> List[A2AMessage]:
     history = []
-
+    
     if prev_messages and len(prev_messages) != 0: 
         for i, prev_message in enumerate(prev_messages):
             i+=1
@@ -20,6 +20,7 @@ def process_history(prev_messages: List[Dict[str, Any]]) -> List[A2AMessage]:
                 parts=[prev_ms_in]
             )
             history.append(h_message)
+            
     return history
 
 def get_query_n_history(message_part: List[MessagePart]) -> Tuple[MessagePart, List[A2AMessage]] | None:
@@ -41,12 +42,12 @@ def get_query_n_history(message_part: List[MessagePart]) -> Tuple[MessagePart, L
 
         return query_str, history
 
-    print('here1')
+    
     query_str.text = purify_text(message_part[0].text) if message_part[0].text else ''
-    print('heremid')
+    
     history = process_history(message_part[1].data) if message_part[1].data and isinstance(message_part[1].data, list) else []
     
-    print('here2')
+    
     print(query_str.text)
     print(query_str.kind)
     print(MessagePart(kind=query_str.kind, text=query_str.text))
