@@ -9,3 +9,7 @@ wheels/
 # Virtual environments
 .venv
 .env
+
+telex.json
+blogpost.md
+post.txt    

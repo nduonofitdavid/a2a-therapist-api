@@ -10,6 +10,7 @@ def process_history(prev_messages: List[Dict[str, Any]]) -> List[A2AMessage]:
 
     if prev_messages and len(prev_messages) != 0: 
         for i, prev_message in enumerate(prev_messages):
+            i+=1
             prev_ms_in = MessagePart(
                 kind=prev_message['kind'], # type: ignore
                 text=purify_text(prev_message['text']) # type: ignore

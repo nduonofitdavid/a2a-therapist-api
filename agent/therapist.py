@@ -4,7 +4,7 @@ from fastapi import  HTTPException
 from datetime import datetime, timezone
 
 from google.genai import types, Client
-from typing import List, Optional, Literal
+from typing import List, Optional
 from uuid import uuid4
 from util import get_query_n_history
 
@@ -63,7 +63,7 @@ class TherapyAgent:
             )
         
         query_, history_ = sectioned_messages
-        ai_agent_response = await self.call_gemini_agent(query_)
+        ai_agent_response = "an agent response" # await self.call_gemini_agent(query_)
 
         agent_message = A2AMessage(
             role='agent',
@@ -86,12 +86,32 @@ class TherapyAgent:
             )
         ]
 
+        if config:
+            print('inside config')
+            if isinstance(config.historyLength, int):
+                history_length: int = config.historyLength
+                print(history_length)
+                if history_length > len(history):
+                    history = []
+                elif history_length == 0:
+                    history = []
+                else:
+                    history_new = [A2AMessage] * history_length
+                    count = 0
+                    current_element = len(history) - 1
+                    while count < history_length:
+                        print(history[current_element].model_dump())
+                        history_new[count] = history[current_element] # type: ignore
+                        current_element-=1
+                        count+=1
+                    history = history_new[::-1]
+
         task_result = TaskResult(
             id=task_id,
             contextId=context_id,
             status=task_status,
             artifacts=artifacts,
-            history=history
+            history=history # type: ignore
         )
 
         return task_result

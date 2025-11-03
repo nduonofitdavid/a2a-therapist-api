@@ -26,9 +26,10 @@ class PushNotificationConfig(BaseModel):
 
 
 class MessageConfiguration(BaseModel):
-    blocking: bool = True
     acceptedOutputModes: List[str] = ['text/plain', 'image/png', 'image/svg+xml']
+    historyLength: Optional[int] = None
     pushNotificationConfig: Optional[PushNotificationConfig] = None
+    blocking: bool = True
 
 
 class MessageParams(BaseModel):
