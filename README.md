@@ -3,6 +3,8 @@
 A **JSON-RPC 2.0 compliant Agent-to-Agent (A2A)** API built with **FastAPI** and managed with **uv**, designed to provide **therapy through the Word of God**.
 This service acts as a biblical therapist agent capable of offering emotional and spiritual guidance using Bible verses and faith-based encouragement.
 
+This API was created mainly to function as an AI agent with the [Telex](https://telex.im) platform.
+
 ---
 
 ## 📘 Overview
@@ -107,14 +109,24 @@ It’s designed for integration into multi-agent systems or applications that ne
 
 ```json
 {
-  "name": "BiblicalTherapistAgent",
-  "version": "1.0",
-  "description": "An AI therapist providing Christian-based encouragement and guidance.",
-  "endpoints": {
-    "therapy": "/a2a/therapist"
+  "name": "biblicaltherapist",
+  "description": "An agent that provides therapy sessions along with biblical words of encouragement",
+  "url": "https://yourdeployedurl.com",
+  "version": "1.0.0",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false,
+    "stateTransitionHistory": false
   },
-  "capabilities": ["A2A", "Faith-based Therapy", "Text Responses"]
+  "skills": [
+    {
+      "name": "therapy",
+      "description": "provides words of encouragement based on the mode entered for the user"
+    }
+  ]
 }
+
+
 ```
 
 ---
