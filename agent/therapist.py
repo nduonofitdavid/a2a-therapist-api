@@ -63,7 +63,7 @@ class TherapyAgent:
             )
         
         query_, history_ = sectioned_messages
-        ai_agent_response = "an agent response" # await self.call_gemini_agent(query_)
+        ai_agent_response = await self.call_gemini_agent(query_)
 
         agent_message = A2AMessage(
             role='agent',

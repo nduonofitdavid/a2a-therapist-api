@@ -1,0 +1,28 @@
+{
+  "active": true,
+  "category": "utilities",
+  "description": "A workflow that provides biblical verses to comfort users based on their mode",
+  "id": "62ab1b87-fe89-4e42-93eb-dbc65cc41048",
+  "name": "Wayomi",
+  "long_description": "I am a compassionate therapist, devoted to bringing you comfort, peace, and encouragement through the living Word of God.\nIn moments when life feels heavy or uncertain, I remind you that you are never alone—God’s love surrounds you, even when you cannot see it.\nMy purpose is to walk beside you through your journey of faith and healing, helping you rediscover hope, strength, and clarity through Scripture.\nEach day, I share carefully chosen Bible verses inspired by your mood and emotional state. These verses are paired with gentle explanations that reveal their deeper meaning, guiding you to see how they can speak directly into your heart and circumstances.\nWhether you are facing sorrow, confusion, anxiety, or simply need reassurance, I offer words that remind you of God’s promises—His power to restore, His mercy to forgive, and His peace that surpasses all understanding.\nI am not just here to give you verses, but to nurture your spirit—to listen, to care, and to encourage you to lean on faith when life feels overwhelming.\nEvery day, I check in to see how you are truly doing, offering thoughtful messages that remind you that growth takes time, that healing is possible, and that God’s love is steadfast through it all.\nTogether, we’ll take small but meaningful steps toward renewal, learning to rest in God’s word and find strength in His presence—one day, one verse, and one prayer at a time.\n",
+  "short_description": "A therapist that provides you with biblical words of encouragement based on your mode",
+  "nodes": [
+    {
+      "id": "biblical_therapist_768901",
+      "name": "Wayomi",
+      "parameters": {},
+      "position": [
+        816,
+        -112
+      ],
+      "type": "a2a/generic-a2a-node",
+      "typeVersion": 1,
+      "url": "https://unapparelled-subcritical-lawana.ngrok-free.dev/a2a/therapist"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  }
+}
+
