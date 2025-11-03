@@ -134,8 +134,8 @@ It’s designed for integration into multi-agent systems or applications that ne
 ### 1. Clone Repository
 
 ```bash
-git clone https://github.com/yourusername/a2a-biblical-therapist.git
-cd a2a-biblical-therapist
+git clone https://github.com/Forsaken324/ndus-hng-stage-three.git
+cd ndus-stage-three
 ```
 
 ### 2. Install Dependencies
