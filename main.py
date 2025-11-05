@@ -226,7 +226,7 @@ async def agent_card():
     response = {
         "name": "biblicaltherapist",
         "description": "An agent that provides therapy sessions along with biblical words of encouragement",
-        "url": "https://unapparelled-subcritical-lawana.ngrok-free.dev/",
+        "url": "https://a2a-therapist-api-production.up.railway.app/",
         "version": "1.0.0",
         "capabilities": {
             "streaming": False,

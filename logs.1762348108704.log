@@ -1,0 +1,219 @@
+2025-11-03T22:30:33.000000000Z [inf]  Starting Container
+2025-11-03T22:30:35.476173862Z [err]  INFO:     Will watch for changes in these directories: ['/app']
+2025-11-03T22:30:35.476178839Z [err]  INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+2025-11-03T22:30:35.476183532Z [err]  INFO:     Started reloader process [1] using WatchFiles
+2025-11-03T22:30:36.053158994Z [err]  INFO:     Started server process [3]
+2025-11-03T22:30:36.053167581Z [err]  INFO:     Waiting for application startup.
+2025-11-03T22:30:36.404816289Z [err]  INFO:     Application startup complete.
+2025-11-03T22:38:16.109461021Z [inf]  2025-11-03 22:38:13,050 - fastapi_app - INFO - Root endpoint accessed
+2025-11-03T22:38:16.109484206Z [inf]  INFO:     100.64.0.2:11926 - "GET / HTTP/1.1" 200 OK
+2025-11-03T22:38:16.109493797Z [inf]  INFO:     100.64.0.2:11926 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+2025-11-03T22:41:46.131910368Z [inf]  INFO:     100.64.0.3:54612 - "GET /a2a/therapist HTTP/1.1" 405 Method Not Allowed
+2025-11-03T22:46:16.235346206Z [inf]  2025-11-03 22:46:08,237 - fastapi_app - INFO - Raw telex body: {
+2025-11-03T22:46:16.235356281Z [inf]    "jsonrpc": "2.0",
+2025-11-03T22:46:16.235364552Z [inf]    "id": "8c5b33df02a840c4aaa10ff48ba38110",
+2025-11-03T22:46:16.235370637Z [inf]            "text": "I am feeling sad"
+2025-11-03T22:46:16.235371714Z [inf]    "method": "message/send",
+2025-11-03T22:46:16.235377417Z [inf]    "params": {
+2025-11-03T22:46:16.235381850Z [inf]          },
+2025-11-03T22:46:16.235384732Z [inf]      "message": {
+2025-11-03T22:46:16.235390339Z [inf]          {
+2025-11-03T22:46:16.235391284Z [inf]        "kind": "message",
+2025-11-03T22:46:16.235398282Z [inf]        "role": "user",
+2025-11-03T22:46:16.235399327Z [inf]            "kind": "data",
+2025-11-03T22:46:16.235403805Z [inf]        "parts": [
+2025-11-03T22:46:16.235407881Z [inf]            "data": [
+2025-11-03T22:46:16.235411363Z [inf]          {
+2025-11-03T22:46:16.235417419Z [inf]                "text": "I'm here and ready to support you! How are you feeling today?"
+2025-11-03T22:46:16.235417518Z [inf]              {
+2025-11-03T22:46:16.235417575Z [inf]            "kind": "text",
+2025-11-03T22:46:16.235424890Z [inf]                "kind": "text",
+2025-11-03T22:46:16.235432291Z [inf]                "text": "<p>Hi how are you doing?</p><p></p>"
+2025-11-03T22:46:16.235434925Z [inf]              },
+2025-11-03T22:46:16.235440208Z [inf]              },
+2025-11-03T22:46:16.235445656Z [inf]              {
+2025-11-03T22:46:16.235448261Z [inf]              {
+2025-11-03T22:46:16.235452724Z [inf]                "kind": "text",
+2025-11-03T22:46:16.235456828Z [inf]                "kind": "text",
+2025-11-03T22:46:16.235460110Z [inf]                "text": "<p>Hi</p><p></p>"
+2025-11-03T22:46:16.235468886Z [inf]              },
+2025-11-03T22:46:16.235475575Z [inf]              {
+2025-11-03T22:46:16.235484464Z [inf]                "kind": "text",
+2025-11-03T22:46:16.236617197Z [inf]                "text": "Hello! How can I assist you today?"
+2025-11-03T22:46:16.236625275Z [inf]              },
+2025-11-03T22:46:16.236632471Z [inf]              {
+2025-11-03T22:46:16.236635023Z [inf]          }
+2025-11-03T22:46:16.236640856Z [inf]                "kind": "text",
+2025-11-03T22:46:16.236648792Z [inf]                "text": "<p>Hi</p><p></p>"
+2025-11-03T22:46:16.236649060Z [inf]              },
+2025-11-03T22:46:16.236649496Z [inf]                "text": "Hello! It's great to connect with you. How can I help you today?"
+2025-11-03T22:46:16.236656900Z [inf]              {
+2025-11-03T22:46:16.236658514Z [inf]              },
+2025-11-03T22:46:16.236661860Z [inf]              },
+2025-11-03T22:46:16.236664978Z [inf]              {
+2025-11-03T22:46:16.236668080Z [inf]                "kind": "text",
+2025-11-03T22:46:16.236669000Z [inf]                "text": "Hi there! How\u2019s your day going? Anything on your mind?"
+2025-11-03T22:46:16.236671704Z [inf]              {
+2025-11-03T22:46:16.236673227Z [inf]                "kind": "text",
+2025-11-03T22:46:16.236677144Z [inf]                "text": "Hello, I am feeling sad"
+2025-11-03T22:46:16.236681467Z [inf]                "kind": "text",
+2025-11-03T22:46:16.236681789Z [inf]              },
+2025-11-03T22:46:16.236685951Z [inf]              }
+2025-11-03T22:46:16.236690114Z [inf]                "text": "<p>Hello, I am feeling sad</p><p></p>"
+2025-11-03T22:46:16.236691877Z [inf]              {
+2025-11-03T22:46:16.236694213Z [inf]            ]
+2025-11-03T22:46:16.236698631Z [inf]                "kind": "text",
+2025-11-03T22:46:16.236703897Z [inf]                "text": "<p>Hi there</p><p></p>"
+2025-11-03T22:46:16.236709629Z [inf]              },
+2025-11-03T22:46:16.236714673Z [inf]              {
+2025-11-03T22:46:16.236720895Z [inf]                "kind": "text",
+2025-11-03T22:46:16.238022736Z [inf]        ],
+2025-11-03T22:46:16.238032178Z [inf]        "metadata": {
+2025-11-03T22:46:16.238039849Z [inf]          "text/plain",
+2025-11-03T22:46:16.238039956Z [inf]          "telex_user_id": "019a3a68-995d-7374-8b5f-22866e1991c0",
+2025-11-03T22:46:16.238040060Z [inf]        "blocking": false
+2025-11-03T22:46:16.238049132Z [inf]          "telex_channel_id": "019a4be0-72f0-7d6d-b72e-2da6dd6d9dbb",
+2025-11-03T22:46:16.238049169Z [inf]      }
+2025-11-03T22:46:16.238050218Z [inf]          "image/png",
+2025-11-03T22:46:16.238050377Z [inf]          "authentication": {
+2025-11-03T22:46:16.238057655Z [inf]          "image/jpg"
+2025-11-03T22:46:16.238058122Z [inf]          "org_id": "019a3a31-02d3-7dd9-bacf-c0f608982bec"
+2025-11-03T22:46:16.238060278Z [inf]            "schemes": [
+2025-11-03T22:46:16.238065231Z [inf]        ],
+2025-11-03T22:46:16.238066948Z [inf]        },
+2025-11-03T22:46:16.238068888Z [inf]              "Bearer"
+2025-11-03T22:46:16.238072361Z [inf]        "historyLength": 0,
+2025-11-03T22:46:16.238076215Z [inf]        "messageId": "323995d145174ddead9e66097ff61373"
+2025-11-03T22:46:16.238077010Z [inf]            ]
+2025-11-03T22:46:16.238079888Z [inf]        "pushNotificationConfig": {
+2025-11-03T22:46:16.238085145Z [inf]      },
+2025-11-03T22:46:16.238086164Z [inf]          }
+2025-11-03T22:46:16.238087855Z [inf]          "url": "https://ping.telex.im/v1/a2a/webhooks/019a4be0-72f0-7d6d-b72e-2da6dd6d9dbb",
+2025-11-03T22:46:16.238093425Z [inf]      "configuration": {
+2025-11-03T22:46:16.238094925Z [inf]        },
+2025-11-03T22:46:16.238097712Z [inf]          "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMTlhNGJlMC01YWYyLTdkNmMtOTAwNi0yODc4OGJjNWZkZGQiLCJpYXQiOjE3NjIyMDk5NjcsImV4cCI6MTc2MjI5NjM2N30.Ko4sD-nK-Rs_Had8oNbAU0jlvwA85DAX2FFCyCz1N7o",
+2025-11-03T22:46:16.238101759Z [inf]        "acceptedOutputModes": [
+2025-11-03T22:46:16.239129001Z [inf]    }
+2025-11-03T22:46:16.239137190Z [inf]  }
+2025-11-03T22:46:16.239143885Z [inf]  {'jsonrpc': '2.0', 'id': '8c5b33df02a840c4aaa10ff48ba38110', 'method': 'message/send', 'params': {'message': {'kind': 'message', 'role': 'user', 'parts': [{'kind': 'text', 'text': 'I am feeling sad'}, {'kind': 'data', 'data': [{'kind': 'text', 'text': '<p>Hi how are you doing?</p><p></p>'}, {'kind': 'text', 'text': "I'm here and ready to support you! How are you feeling today?"}, {'kind': 'text', 'text': '<p>Hi</p><p></p>'}, {'kind': 'text', 'text': 'Hello! How can I assist you today?'}, {'kind': 'text', 'text': '<p>Hi</p><p></p>'}, {'kind': 'text', 'text': 'Hi there! How’s your day going? Anything on your mind?'}, {'kind': 'text', 'text': '<p>Hi there</p><p></p>'}, {'kind': 'text', 'text': "Hello! It's great to connect with you. How can I help you today?"}, {'kind': 'text', 'text': '<p>Hello, I am feeling sad</p><p></p>'}, {'kind': 'text', 'text': 'Hello, I am feeling sad'}]}], 'metadata': {'telex_user_id': '019a3a68-995d-7374-8b5f-22866e1991c0', 'telex_channel_id': '019a4be0-72f0-7d6d-b72e-2da6dd6d9dbb', 'org_id': '019a3a31-02d3-7dd9-bacf-c0f608982bec'}, 'messageId': '323995d145174ddead9e66097ff61373'}, 'configuration': {'acceptedOutputModes': ['text/plain', 'image/png', 'image/jpg'], 'historyLength': 0, 'pushNotificationConfig': {'url': 'https://ping.telex.im/v1/a2a/webhooks/019a4be0-72f0-7d6d-b72e-2da6dd6d9dbb', 'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMTlhNGJlMC01YWYyLTdkNmMtOTAwNi0yODc4OGJjNWZkZGQiLCJpYXQiOjE3NjIyMDk5NjcsImV4cCI6MTc2MjI5NjM2N30.Ko4sD-nK-Rs_Had8oNbAU0jlvwA85DAX2FFCyCz1N7o', 'authentication': {'schemes': ['Bearer']}}, 'blocking': False}}}
+2025-11-03T22:46:16.239151907Z [inf]  here1
+2025-11-03T22:46:16.239158089Z [inf]  heremid
+2025-11-03T22:46:16.239163783Z [inf]  here2
+2025-11-03T22:46:16.239169750Z [inf]  I am feeling sad
+2025-11-03T22:46:16.239176275Z [inf]  text
+2025-11-03T22:46:16.239182935Z [inf]  kind='text' text='I am feeling sad' data=None file_url=None
+2025-11-03T22:46:16.240439226Z [inf]  inside config
+2025-11-03T22:46:16.240443576Z [inf]  0
+2025-11-03T22:46:16.240447550Z [inf]  INFO:     100.64.0.4:62270 - "POST /a2a/therapist HTTP/1.1" 200 OK
+2025-11-03T22:52:46.627841449Z [err]  Traceback (most recent call last):
+2025-11-03T22:52:46.627854756Z [err]    File "/app/main.py", line 165, in a2a_endpoint
+2025-11-03T22:52:46.627860625Z [inf]  INFO:     100.64.0.3:53768 - "GET /a2a/therapist HTTP/1.1" 405 Method Not Allowed
+2025-11-03T22:52:46.627866564Z [err]      result = await therapy_agent.process_messages(
+2025-11-03T22:52:46.627867695Z [inf]  INFO:     100.64.0.3:53768 - "GET /a2a/therapist HTTP/1.1" 405 Method Not Allowed
+2025-11-03T22:52:46.627874416Z [inf]  2025-11-03 22:52:40,681 - fastapi_app - INFO - Raw telex body: {
+2025-11-03T22:52:46.627876101Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-03T22:52:46.627880940Z [inf]    "message": "Hello, this is a test A2A communication",
+2025-11-03T22:52:46.627884858Z [err]    File "/app/agent/therapist.py", line 51, in process_messages
+2025-11-03T22:52:46.627887674Z [inf]    "task": "process_request"
+2025-11-03T22:52:46.627894357Z [inf]  }
+2025-11-03T22:52:46.627894879Z [err]      raise ValueError("No message provided")
+2025-11-03T22:52:46.627900343Z [inf]  {'message': 'Hello, this is a test A2A communication', 'task': 'process_request'}
+2025-11-03T22:52:46.627904243Z [err]  ValueError: No message provided
+2025-11-03T22:52:46.627906578Z [inf]  No message provided
+2025-11-03T22:52:46.627913688Z [inf]  INFO:     100.64.0.3:53768 - "POST /a2a/therapist HTTP/1.1" 500 Internal Server Error
+2025-11-03T22:52:46.627913758Z [err]  ERROR:root:A2A endpoint error - Request ID: NoneRequest Method: NoneException Raised: No message provided
+2025-11-03T22:52:46.628331912Z [inf]  2025-11-03 22:52:40,867 - fastapi_app - INFO - Raw telex body: {
+2025-11-03T22:52:46.628355507Z [inf]    "message": "Hello, this is a test A2A communication",
+2025-11-03T22:52:46.628363790Z [inf]    "task": "process_request"
+2025-11-03T22:52:46.628372514Z [inf]  }
+2025-11-03T22:52:46.628380555Z [inf]  {'message': 'Hello, this is a test A2A communication', 'task': 'process_request'}
+2025-11-03T22:52:46.632517538Z [err]  Traceback (most recent call last):
+2025-11-03T22:52:46.632519981Z [err]  ERROR:root:A2A endpoint error - Request ID: NoneRequest Method: NoneException Raised: No message provided
+2025-11-03T22:52:46.632526573Z [err]    File "/app/main.py", line 165, in a2a_endpoint
+2025-11-03T22:52:46.632532385Z [err]      result = await therapy_agent.process_messages(
+2025-11-03T22:52:46.632538145Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-03T22:52:46.632541856Z [err]  Traceback (most recent call last):
+2025-11-03T22:52:46.632544109Z [err]  }
+2025-11-03T22:52:46.632546927Z [err]    File "/app/agent/therapist.py", line 51, in process_messages
+2025-11-03T22:52:46.632549106Z [err]    File "/app/main.py", line 165, in a2a_endpoint
+2025-11-03T22:52:46.632550410Z [inf]  No message provided
+2025-11-03T22:52:46.632556413Z [err]      raise ValueError("No message provided")
+2025-11-03T22:52:46.632556521Z [err]  ERROR:root:A2A endpoint error - Request ID: NoneRequest Method: NoneException Raised: No message provided
+2025-11-03T22:52:46.632560826Z [inf]  {'message': 'Test message'}
+2025-11-03T22:52:46.632568457Z [err]  INFO:fastapi_app:Raw telex body: {
+2025-11-03T22:52:46.632576135Z [err]    "message": "Test message"
+2025-11-03T22:52:46.632585033Z [err]  }
+2025-11-03T22:52:46.632585263Z [err]  ValueError: No message provided
+2025-11-03T22:52:46.632598067Z [err]      result = await therapy_agent.process_messages(
+2025-11-03T22:52:46.632607450Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-03T22:52:46.632608356Z [inf]  INFO:     100.64.0.3:53768 - "POST /a2a/therapist HTTP/1.1" 500 Internal Server Error
+2025-11-03T22:52:46.632613337Z [err]    File "/app/agent/therapist.py", line 51, in process_messages
+2025-11-03T22:52:46.632627980Z [inf]  2025-11-03 22:52:42,239 - fastapi_app - INFO - Raw telex body: {
+2025-11-03T22:52:46.632641408Z [inf]    "message": "Test message"
+2025-11-03T22:52:46.632651019Z [inf]  }
+2025-11-03T22:52:46.632680914Z [err]  ValueError: No message provided
+2025-11-03T22:52:46.632695537Z [inf]  }
+2025-11-03T22:52:46.632702777Z [inf]  No message provided
+2025-11-03T22:52:46.632703613Z [inf]  {'message': 'Test message'}
+2025-11-03T22:52:46.632703797Z [inf]  2025-11-03 22:52:42,424 - fastapi_app - INFO - Raw telex body: {
+2025-11-03T22:52:46.632704394Z [inf]  No message provided
+2025-11-03T22:52:46.632714387Z [inf]    "message": "Test message"
+2025-11-03T22:52:46.632714588Z [err]  INFO:fastapi_app:Raw telex body: {
+2025-11-03T22:52:46.632716597Z [inf]  INFO:     100.64.0.3:53768 - "POST /a2a/therapist HTTP/1.1" 500 Internal Server Error
+2025-11-03T22:52:46.632723181Z [err]  ERROR:root:A2A endpoint error - Request ID: NoneRequest Method: NoneException Raised: No message provided
+2025-11-03T22:52:46.632724850Z [err]      raise ValueError("No message provided")
+2025-11-03T22:52:46.632725577Z [err]    File "/app/agent/therapist.py", line 51, in process_messages
+2025-11-03T22:52:46.632726163Z [err]    "message": "Test message"
+2025-11-03T22:52:46.632734115Z [err]      result = await therapy_agent.process_messages(
+2025-11-03T22:52:46.632736430Z [err]  Traceback (most recent call last):
+2025-11-03T22:52:46.632736901Z [err]  }
+2025-11-03T22:52:46.632737064Z [err]      raise ValueError("No message provided")
+2025-11-03T22:52:46.632745391Z [err]    File "/app/main.py", line 165, in a2a_endpoint
+2025-11-03T22:52:46.632748441Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-03T22:52:46.632758848Z [err]  ValueError: No message provided
+2025-11-03T22:52:46.632761319Z [inf]  2025-11-03 22:52:43,617 - fastapi_app - INFO - Raw telex body: {
+2025-11-03T22:52:46.632765154Z [inf]  INFO:     100.64.0.3:53768 - "POST /a2a/therapist HTTP/1.1" 500 Internal Server Error
+2025-11-03T22:52:46.632775921Z [inf]    "message": "Test message"
+2025-11-03T22:52:46.632784377Z [inf]  }
+2025-11-03T22:52:46.633395931Z [err]  INFO:fastapi_app:Raw telex body: {
+2025-11-03T22:52:46.633402927Z [err]    "message": "Hello, this is a test A2A communication",
+2025-11-03T22:52:46.633410494Z [err]    "task": "process_request"
+2025-11-03T22:52:46.633417459Z [err]  }
+2025-11-03T22:52:46.633428112Z [inf]  No message provided
+2025-11-03T22:52:46.633435081Z [err]  ERROR:root:A2A endpoint error - Request ID: NoneRequest Method: NoneException Raised: No message provided
+2025-11-03T22:52:46.633442128Z [err]  Traceback (most recent call last):
+2025-11-03T22:52:46.633449684Z [err]    File "/app/main.py", line 165, in a2a_endpoint
+2025-11-03T22:52:46.633453116Z [inf]  {'message': 'Test message'}
+2025-11-03T22:52:46.633457497Z [err]      result = await therapy_agent.process_messages(
+2025-11-03T22:52:46.633465608Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-03T22:52:46.633470241Z [err]  INFO:fastapi_app:Raw telex body: {
+2025-11-03T22:52:46.633474910Z [err]    File "/app/agent/therapist.py", line 51, in process_messages
+2025-11-03T22:52:46.633477666Z [err]    "message": "Test message"
+2025-11-03T22:52:46.633483809Z [err]      raise ValueError("No message provided")
+2025-11-03T22:52:46.633485904Z [err]  }
+2025-11-03T22:52:46.633491450Z [inf]  No message provided
+2025-11-03T22:52:46.633493252Z [err]  ValueError: No message provided
+2025-11-03T22:52:46.633497900Z [err]  ERROR:root:A2A endpoint error - Request ID: NoneRequest Method: NoneException Raised: No message provided
+2025-11-03T22:52:46.633502223Z [inf]  INFO:     100.64.0.3:53768 - "POST /a2a/therapist HTTP/1.1" 500 Internal Server Error
+2025-11-03T22:52:46.633503874Z [err]  Traceback (most recent call last):
+2025-11-03T22:52:46.633509677Z [err]    File "/app/main.py", line 165, in a2a_endpoint
+2025-11-03T22:52:46.633511362Z [inf]  INFO:     100.64.0.5:60982 - "GET /a2a/therapist HTTP/1.1" 405 Method Not Allowed
+2025-11-03T22:52:46.633515903Z [err]      result = await therapy_agent.process_messages(
+2025-11-03T22:52:46.633519811Z [inf]  2025-11-03 22:52:42,053 - fastapi_app - INFO - Raw telex body: {
+2025-11-03T22:52:46.633522451Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-03T22:52:46.633528179Z [err]    File "/app/agent/therapist.py", line 51, in process_messages
+2025-11-03T22:52:46.633528525Z [inf]    "message": "Hello, this is a test A2A communication",
+2025-11-03T22:52:46.633533575Z [err]      raise ValueError("No message provided")
+2025-11-03T22:52:46.633537175Z [inf]    "task": "process_request"
+2025-11-03T22:52:46.633540915Z [err]  ValueError: No message provided
+2025-11-03T22:52:46.633546615Z [inf]  }
+2025-11-03T22:52:46.633548616Z [inf]  INFO:     100.64.0.3:53768 - "POST /a2a/therapist HTTP/1.1" 500 Internal Server Error
+2025-11-03T22:52:46.633554668Z [inf]  {'message': 'Hello, this is a test A2A communication', 'task': 'process_request'}
+2025-11-03T22:52:46.633561738Z [err]  INFO:fastapi_app:Raw telex body: {
+2025-11-03T22:52:46.633568624Z [err]    "message": "Hello, this is a test A2A communication",
+2025-11-03T22:52:46.633576270Z [err]    "task": "process_request"
+2025-11-03T23:02:07.021935950Z [inf]  2025-11-03 23:02:02,326 - fastapi_app - INFO - Root endpoint accessed
+2025-11-03T23:02:07.021945362Z [err]  INFO:fastapi_app:Root endpoint accessed
+2025-11-03T23:02:07.021952003Z [inf]  INFO:     100.64.0.6:49822 - "GET / HTTP/1.1" 200 OK
+2025-11-03T23:02:07.021959488Z [inf]  INFO:     100.64.0.6:49822 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+2025-11-03T23:46:35.000000000Z [inf]  Stopping Container
